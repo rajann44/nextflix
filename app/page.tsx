@@ -78,9 +78,9 @@ export default async function Home() {
       </section>
 
       {/* Movie Categories */}
-      <section className="relative space-y-0.5 md:space-y-2 bg-gradient-to-b from-[#010511]/80 to-[#010511]">
+      <section className="relative space-y-8 bg-gradient-to-b from-[#010511]/80 to-[#010511]">
         {Object.entries(moviesByCategory).map(([category, movies]) => (
-          <div key={category} className="space-y-0.5 md:space-y-2">
+          <div key={category} className="space-y-4">
             <h2 className="px-4 lg:px-16 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
               {category}
             </h2>
