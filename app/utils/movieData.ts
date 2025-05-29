@@ -1,59 +1,62 @@
 import { DailymotionApiUtil } from '../../src/utils/dailymotionApi';
 import { DailymotionVideo } from '../../src/types/dailymotion';
 
-export type Movie = DailymotionVideo;
+type Movie = DailymotionVideo;
 
-let cachedMovies: Movie[] | null = null;
+interface CachedMovies {
+    [key: string]: Movie[];
+}
 
-export async function getAllMovies(): Promise<Movie[]> {
+let cachedMovies: CachedMovies | null = null;
+
+export async function getAllMovies(): Promise<CachedMovies> {
     if (cachedMovies) {
         return cachedMovies;
     }
 
     try {
-        const response = await DailymotionApiUtil.fetchTrendingVideos();
-        
-        // Create a map to track which special word is assigned to each base channel
-        const channelWordMap = new Map<string, string>();
-        let wordIndex = 0;
+        const channels = [
+            { key: 'MUSIC', title: 'Music' },
+            { key: 'COMEDY', title: 'Comedy & Entertainment' },
+            { key: 'GAMING', title: 'Gaming' },
+            { key: 'PEOPLE', title: 'People & Culture' },
+            { key: 'LIFESTYLE', title: 'Lifestyle & How-To' },
+            { key: 'EDUCATION', title: 'Education' },
+            { key: 'NEWS', title: 'News' }
+        ] as const;
 
-        // Transform the channel names before caching
-        cachedMovies = response.list.map((movie) => {
-            const baseChannel = movie.channel;
-            
-            // If this channel hasn't been assigned a word yet, assign one
-            if (!channelWordMap.has(baseChannel)) {
-                channelWordMap.set(baseChannel, DailymotionApiUtil.CHANNEL_WORDS[wordIndex % DailymotionApiUtil.CHANNEL_WORDS.length]);
-                wordIndex++;
-            }
+        const moviesByCategory: CachedMovies = {};
 
-            return {
-                ...movie,
-                channel: `${baseChannel} - ${channelWordMap.get(baseChannel)}`
-            };
-        });
-        
+        // Fetch videos for each channel
+        for (const channel of channels) {
+            const response = await DailymotionApiUtil.fetchVideosByChannel(channel.key);
+            moviesByCategory[channel.title] = response.list;
+        }
+
+        cachedMovies = moviesByCategory;
         return cachedMovies;
     } catch (error) {
         console.error('Error fetching movies:', error);
-        cachedMovies = [];
+        cachedMovies = {};
         return cachedMovies;
     }
 }
 
-export async function getMoviesByChannel(channel: string): Promise<Movie[]> {
-    const movies = await getAllMovies();
-    // Extract the base channel name (without the special word) for filtering
-    const baseChannel = channel.split(' - ')[0];
-    return movies.filter(movie => {
-        const movieBaseChannel = movie.channel.split(' - ')[0];
-        return movieBaseChannel === baseChannel;
-    });
+export async function getMoviesByCategory(category: string): Promise<Movie[]> {
+    const allMovies = await getAllMovies();
+    return allMovies[category] || [];
 }
 
 export async function getMovieById(id: string): Promise<Movie | undefined> {
-    const movies = await getAllMovies();
-    return movies.find(movie => movie.id === id);
+    const allMovies = await getAllMovies();
+    for (const category in allMovies) {
+        const movies: Movie[] = allMovies[category];
+        const movie = movies.find((m: Movie) => m.id === id);
+        if (movie) {
+            return movie;
+        }
+    }
+    return undefined;
 }
 
 export async function getChannels(): Promise<string[]> {

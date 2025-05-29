@@ -6,30 +6,31 @@ import { DailymotionApiResponse, DailymotionVideo } from '../types/dailymotion';
 export class DailymotionApiUtil {
     private static readonly BASE_URL = 'https://api.dailymotion.com/videos';
     private static readonly DEFAULT_FIELDS = 'id,title,channel,thumbnail_480_url,url,owner.screenname,views_total,duration';
-    private static readonly DEFAULT_LIMIT = 36;
+    private static readonly DEFAULT_LIMIT = 10;
 
-    public static readonly CHANNEL_WORDS = [
-        'Spotlight',
-        'Picks',
-        'Essentials',
-        'Briefs',
-        'Latest',
-        'Now'
-    ];
-
-    private static channelWordIndex = 0;
+    public static readonly CHANNELS = {
+        MUSIC: 'music',
+        COMEDY: 'fun',
+        GAMING: 'videogames',
+        PEOPLE: 'people',
+        LIFESTYLE: 'lifestyle',
+        EDUCATION: 'school',
+        NEWS: 'news'
+    } as const;
 
     /**
-     * Fetches trending videos from Dailymotion API
+     * Fetches videos from Dailymotion API for a specific channel
+     * @param channel The channel to fetch videos from
      * @param options Optional parameters to customize the request
      * @returns Promise<DailymotionApiResponse>
      */
-    public static async fetchTrendingVideos(options?: {
+    public static async fetchVideosByChannel(channel: keyof typeof DailymotionApiUtil.CHANNELS, options?: {
         limit?: number;
         fields?: string;
         sort?: string;
     }): Promise<DailymotionApiResponse> {
         const params = new URLSearchParams({
+            'channel': this.CHANNELS[channel],
             'sort': options?.sort || 'trending',
             'fields': options?.fields || this.DEFAULT_FIELDS,
             'limit': String(options?.limit || this.DEFAULT_LIMIT)
@@ -96,14 +97,10 @@ export class DailymotionApiUtil {
      * @returns Transformed DailymotionVideo
      */
     private static transformVideo(video: any): DailymotionVideo {
-        const channel = String(video.channel || '');
-        const specialWord = this.CHANNEL_WORDS[this.channelWordIndex];
-        this.channelWordIndex = (this.channelWordIndex + 1) % this.CHANNEL_WORDS.length;
-        
         return {
             id: String(video.id || ''),
             title: String(video.title || ''),
-            channel: `${channel} - ${specialWord}`,
+            channel: String(video.channel || ''),
             thumbnail_480_url: String(video.thumbnail_480_url || ''),
             url: String(video.url || ''),
             'owner.screenname': video['owner.screenname'] || video.owner_screenname || '',
