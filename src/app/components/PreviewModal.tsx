@@ -9,7 +9,7 @@ interface PreviewModalProps {
     thumbnail_480_url: string
     duration: number
     channel: string
-    'owner.screenname': string
+    'owner.screenname'?: string
     url: string
   }
 }
@@ -97,9 +97,11 @@ export default function PreviewModal({ isOpen, onClose, videoData }: PreviewModa
                     <span>•</span>
                     <span>HD</span>
                   </div>
-                  <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-300">
-                    {videoData['owner.screenname']}
-                  </p>
+                  {videoData['owner.screenname'] && (
+                    <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-300">
+                      {videoData['owner.screenname']}
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.div>

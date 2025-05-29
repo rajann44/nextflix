@@ -9,7 +9,7 @@ interface MovieCardProps {
   thumbnail_480_url: string
   index: number
   channel: string
-  'owner.screenname': string
+  'owner.screenname'?: string
   duration: number
   url: string
 }
@@ -19,7 +19,7 @@ export default function MovieCard({
   thumbnail_480_url, 
   index,
   channel,
-  'owner.screenname': ownerScreenname,
+  'owner.screenname': ownerScreenname = '',
   duration,
   url
 }: MovieCardProps) {
