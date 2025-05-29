@@ -3,6 +3,7 @@ import Header from '../../components/Header'
 import MovieCard from '../../components/MovieCard'
 import { getMoviesByCategory, getCategoryTitleFromSlug } from '../../utils/movieData'
 import PaginationControls from '../../components/PaginationControls'
+import SortButton from '../../components/SortButton'
 import { DailymotionVideo } from '../../types/dailymotion'
 
 interface CategoryPageProps {
@@ -11,6 +12,7 @@ interface CategoryPageProps {
   }
   searchParams: {
     page?: string
+    sort?: string
   }
 }
 
@@ -25,7 +27,8 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
   const categoryTitle = getCategoryTitleFromSlug(params.category) || params.category
   const currentPage = Number(searchParams.page) || 1
-  const { results: movies, pagination } = await getMoviesByCategory(params.category, currentPage)
+  const currentSort = searchParams.sort || 'trending'
+  const { results: movies, pagination } = await getMoviesByCategory(params.category, currentPage, 20, currentSort)
 
   return (
     <main className="relative bg-gradient-to-b from-gray-900/10 to-[#010511]">
@@ -33,9 +36,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       
       <div className="pt-24 pb-16">
         <div className="px-4 md:px-16">
-          <h1 className="text-2xl font-bold md:text-4xl mb-8">
-            {categoryTitle}
-          </h1>
+          <div className="flex items-center justify-between mb-8">
+            <h1 className="text-2xl font-bold md:text-4xl">
+              {categoryTitle}
+            </h1>
+            <SortButton isCategory={true} />
+          </div>
           
           {movies && movies.length > 0 ? (
             <>

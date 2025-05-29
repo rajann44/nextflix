@@ -5,7 +5,7 @@ import { DailymotionApiResponse, DailymotionVideo } from '../types/dailymotion';
  */
 export class DailymotionApiUtil {
     private static readonly BASE_URL = 'https://api.dailymotion.com/videos';
-    private static readonly DEFAULT_FIELDS = 'id,title,channel,thumbnail_480_url,url,owner.screenname,views_total,duration';
+    private static readonly DEFAULT_FIELDS = 'id,title,channel,thumbnail_480_url,url,owner.screenname,views_total,duration,created_time';
     private static readonly DEFAULT_LIMIT = 10;
 
     public static readonly CHANNELS = {

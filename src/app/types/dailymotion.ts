@@ -22,6 +22,7 @@ export interface DailymotionVideo {
 
     views_total: number;
     duration: number; // Duration in seconds
+    created_time: number; // Unix timestamp of when the video was created
     [key: string]: any; // Allow for other properties not explicitly defined
 }
 

@@ -12,6 +12,7 @@ interface MovieCardProps {
   'owner.screenname'?: string
   duration: number
   url: string
+  created_time: number
 }
 
 export default function MovieCard({ 
@@ -21,7 +22,8 @@ export default function MovieCard({
   channel,
   'owner.screenname': ownerScreenname = '',
   duration,
-  url
+  url,
+  created_time
 }: MovieCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [isPreviewOpen, setIsPreviewOpen] = useState(false)
@@ -30,6 +32,11 @@ export default function MovieCard({
     const minutes = Math.floor(seconds / 60)
     const remainingSeconds = seconds % 60
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
+  }
+
+  const formatDate = (timestamp: number) => {
+    const date = new Date(timestamp * 1000)
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
   }
 
   const formatViews = (views: number) => {
@@ -82,6 +89,7 @@ export default function MovieCard({
               <h3 className="text-sm font-semibold text-white">{title}</h3>
               <p className="text-xs text-gray-400">{channel}</p>
               <p className="text-xs text-gray-400">{formatDuration(duration)}</p>
+              <p className="text-xs text-gray-400">Uploaded {formatDate(created_time)}</p>
             </div>
           </motion.div>
         )}
@@ -96,7 +104,8 @@ export default function MovieCard({
           duration,
           channel,
           'owner.screenname': ownerScreenname,
-          url
+          url,
+          created_time
         }}
       />
     </>

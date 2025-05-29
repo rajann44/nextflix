@@ -60,7 +60,7 @@ export async function getAllMovies(): Promise<CachedMovies> {
     }
 }
 
-export async function getMoviesByCategory(category: string, page: number = 1, limit: number = 20): Promise<{ results: Movie[], pagination: { currentPage: number, hasMore: boolean, totalPages: number, totalResults: number } }> {
+export async function getMoviesByCategory(category: string, page: number = 1, limit: number = 20, sort: string = 'trending'): Promise<{ results: Movie[], pagination: { currentPage: number, hasMore: boolean, totalPages: number, totalResults: number } }> {
     // Find the channel key for the given category
     const channelEntry = Object.entries(channelMap).find(([_, value]) => value.slug === category);
     if (!channelEntry) {
@@ -78,7 +78,7 @@ export async function getMoviesByCategory(category: string, page: number = 1, li
     const channelKey = channelEntry[1].key;
 
     try {
-        const response = await DailymotionApiUtil.fetchVideosByChannel(channelKey, { limit, page });
+        const response = await DailymotionApiUtil.fetchVideosByChannel(channelKey, { limit, page, sort });
         return {
             results: response.list,
             pagination: {
@@ -128,10 +128,10 @@ export async function getChannels(): Promise<string[]> {
     return Array.from(uniqueChannels);
 }
 
-export async function getSearchResults(query: string, page: number = 1, limit: number = 20) {
+export async function getSearchResults(query: string, page: number = 1, limit: number = 20, sort: string = 'relevance') {
     try {
         const response = await fetch(
-            `https://api.dailymotion.com/videos?search=${encodeURIComponent(query)}&fields=id,title,channel,thumbnail_480_url,url,owner.screenname,views_total,duration&limit=${limit}&page=${page}`
+            `https://api.dailymotion.com/videos?search=${encodeURIComponent(query)}&fields=id,title,channel,thumbnail_480_url,url,owner.screenname,views_total,duration&limit=${limit}&page=${page}&sort=${sort}`
         )
         const data = await response.json()
         return {

@@ -3,12 +3,14 @@ import Header from '../components/Header'
 import MovieCard from '../components/MovieCard'
 import { getSearchResults } from '../utils/movieData'
 import PaginationControls from '../components/PaginationControls'
+import SortButton from '../components/SortButton'
 import { DailymotionVideo } from '../types/dailymotion'
 
 interface SearchPageProps {
   searchParams: {
     q?: string
     page?: string
+    sort?: string
   }
 }
 
@@ -20,7 +22,8 @@ export const metadata: Metadata = {
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const searchQuery = searchParams.q || ''
   const currentPage = Number(searchParams.page) || 1
-  const searchData = searchQuery ? await getSearchResults(searchQuery, currentPage) : { results: [], pagination: { currentPage: 1, hasMore: false, totalPages: 0, totalResults: 0 } }
+  const currentSort = searchParams.sort || 'relevance'
+  const searchData = searchQuery ? await getSearchResults(searchQuery, currentPage, 20, currentSort) : { results: [], pagination: { currentPage: 1, hasMore: false, totalPages: 0, totalResults: 0 } }
 
   return (
     <main className="relative bg-gradient-to-b from-gray-900/10 to-[#010511]">
@@ -28,9 +31,12 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       
       <div className="pt-24 pb-16">
         <div className="px-4 md:px-16">
-          <h1 className="text-2xl font-bold md:text-4xl mb-8">
-            Search Results for: {searchQuery}
-          </h1>
+          <div className="flex items-center justify-between mb-8">
+            <h1 className="text-2xl font-bold md:text-4xl">
+              Search Results for: {searchQuery}
+            </h1>
+            {searchQuery && <SortButton />}
+          </div>
           
           {searchQuery ? (
             <div>
