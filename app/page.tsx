@@ -25,10 +25,13 @@ export default async function Home() {
           />
           <ul className="hidden space-x-4 md:flex">
             <li className="headerLink">Home</li>
-            <li className="headerLink">TV Shows</li>
-            <li className="headerLink">Movies</li>
-            <li className="headerLink">New & Popular</li>
-            <li className="headerLink">My List</li>
+            <li className="headerLink">Music</li>
+            <li className="headerLink">Comedy & Entertainment</li>
+            <li className="headerLink">Gaming</li>
+            <li className="headerLink">People & Culture</li>
+            <li className="headerLink">Lifestyle & How-To</li>
+            <li className="headerLink">Education</li>
+            <li className="headerLink">News</li>
           </ul>
         </div>
         <div className="flex items-center space-x-4 text-sm font-light">

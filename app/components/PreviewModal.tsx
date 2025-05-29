@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { XMarkIcon, PlusIcon, PlayIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon, PlusIcon, PlayIcon, ArrowsPointingOutIcon } from '@heroicons/react/24/outline'
 
 interface PreviewModalProps {
   isOpen: boolean
@@ -52,13 +52,27 @@ export default function PreviewModal({ isOpen, onClose, videoData }: PreviewModa
                   className="w-full h-full"
                   allow="autoplay; fullscreen; picture-in-picture"
                   allowFullScreen
+                  id="video-iframe"
                 />
-                <button
-                  onClick={onClose}
-                  className="absolute top-4 right-4 rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
-                >
-                  <XMarkIcon className="h-6 w-6" />
-                </button>
+                <div className="absolute top-4 right-4 flex space-x-2">
+                  <button
+                    onClick={() => {
+                      const iframe = document.getElementById('video-iframe') as HTMLIFrameElement;
+                      if (iframe.requestFullscreen) {
+                        iframe.requestFullscreen();
+                      }
+                    }}
+                    className="rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
+                  >
+                    <ArrowsPointingOutIcon className="h-6 w-6" />
+                  </button>
+                  <button
+                    onClick={onClose}
+                    className="rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
+                  >
+                    <XMarkIcon className="h-6 w-6" />
+                  </button>
+                </div>
               </div>
 
               {/* Content */}
