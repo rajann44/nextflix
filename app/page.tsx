@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import MovieCard from './components/MovieCard'
-import Banner from './components/Banner'
-import { getMoviesByCategory, getCategories } from './utils/movieData'
+import { getMoviesByChannel, getChannels } from './utils/movieData'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Nextflix',
@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  const trendingMovies = getMoviesByCategory('trending')
-  const popularMovies = getMoviesByCategory('popular')
-  const continueWatchingMovies = getMoviesByCategory('continueWatching')
-  const myListMovies = getMoviesByCategory('myList')
-  const categories = getCategories()
+  const channels = getChannels()
+  const videogamesMovies = getMoviesByChannel('videogames')
+  const animalsMovies = getMoviesByChannel('animals')
+  const shortfilmsMovies = getMoviesByChannel('shortfilms')
+  const newsMovies = getMoviesByChannel('news')
 
   return (
     <main className="relative bg-gradient-to-b from-gray-900/10 to-[#010511]">
@@ -52,21 +52,47 @@ export default function Home() {
       </header>
 
       {/* Banner */}
-      <Banner
-        title={trendingMovies[0].title}
-        description={trendingMovies[0].description}
-        rating={trendingMovies[0].rating}
-        year={trendingMovies[0].year}
-        seasons={trendingMovies[0].duration}
-      />
+      <div className="relative h-[56.25vw]">
+        <Image
+          src="/banner.jpg"
+          alt="Banner"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#010511] via-transparent to-transparent" />
+        
+        {/* Banner Details */}
+        <div className="absolute top-[30%] ml-4 md:ml-16">
+          <h1 className="text-3xl h-full w-[50%] font-bold">
+            What's Trending @whatstrending
+          </h1>
+          <p className="text-white text-[8px] md:text-lg mt-3 md:mt-8 w-[90%] md:w-[80%] lg:w-[50%] font-light">
+            The biggest headlines in entertainment, digital and more. What's Trending delivers the latest video news for all things pop culture.
+          </p>
+          <div className="flex flex-row gap-3 mt-3 md:mt-4">
+            <button className="bannerButton bg-white text-black">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 md:w-7 md:h-7">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+              </svg>
+              Play
+            </button>
+            <button className="bannerButton bg-[gray]/70">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 md:w-7 md:h-7">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+              </svg>
+              More Info
+            </button>
+          </div>
+        </div>
+      </div>
 
-      {/* Content Rows */}
       <section className="space-y-8 pb-24">
-        {/* Trending Now */}
+        {/* Video Games */}
         <div className="space-y-4">
-          <h2 className="text-lg md:text-xl px-4 lg:px-16">Trending Now</h2>
+          <h2 className="text-lg md:text-xl px-4 lg:px-16">Video Games</h2>
           <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
-            {trendingMovies.map((movie, index) => (
+            {videogamesMovies.map((movie, index) => (
               <MovieCard
                 key={movie.id}
                 {...movie}
@@ -76,11 +102,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Popular on Netflix */}
+        {/* Animals */}
         <div className="space-y-4">
-          <h2 className="text-lg md:text-xl px-4 lg:px-16">Popular on Netflix</h2>
+          <h2 className="text-lg md:text-xl px-4 lg:px-16">Animals</h2>
           <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
-            {popularMovies.map((movie, index) => (
+            {animalsMovies.map((movie, index) => (
               <MovieCard
                 key={movie.id}
                 {...movie}
@@ -90,11 +116,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Continue Watching */}
+        {/* Short Films */}
         <div className="space-y-4">
-          <h2 className="text-lg md:text-xl px-4 lg:px-16">Continue Watching</h2>
+          <h2 className="text-lg md:text-xl px-4 lg:px-16">Short Films</h2>
           <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
-            {continueWatchingMovies.map((movie, index) => (
+            {shortfilmsMovies.map((movie, index) => (
               <MovieCard
                 key={movie.id}
                 {...movie}
@@ -104,31 +130,16 @@ export default function Home() {
           </div>
         </div>
 
-        {/* My List */}
+        {/* News */}
         <div className="space-y-4">
-          <h2 className="text-lg md:text-xl px-4 lg:px-16">My List</h2>
+          <h2 className="text-lg md:text-xl px-4 lg:px-16">News</h2>
           <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
-            {myListMovies.map((movie, index) => (
+            {newsMovies.map((movie, index) => (
               <MovieCard
                 key={movie.id}
                 {...movie}
                 index={index}
               />
-            ))}
-          </div>
-        </div>
-
-        {/* Categories */}
-        <div className="space-y-4">
-          <h2 className="text-lg md:text-xl px-4 lg:px-16">Categories</h2>
-          <div className="grid grid-cols-2 gap-4 px-4 lg:px-16 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-            {categories.map((category) => (
-              <div
-                key={category}
-                className="cursor-pointer rounded bg-gray-800 p-4 text-center text-sm font-semibold transition hover:bg-gray-700"
-              >
-                {category}
-              </div>
             ))}
           </div>
         </div>

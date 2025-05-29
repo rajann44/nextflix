@@ -5,24 +5,39 @@ import { motion } from 'framer-motion'
 
 interface MovieCardProps {
   title: string
-  image: string
+  thumbnail_480_url: string
   index: number
-  description?: string
-  rating?: string
-  year?: string
-  duration?: string
+  channel?: string
+  'owner.screenname'?: string
+  views_total?: number
+  duration?: number
 }
 
 export default function MovieCard({ 
   title, 
-  image, 
+  thumbnail_480_url, 
   index,
-  description,
-  rating,
-  year,
+  channel,
+  'owner.screenname': ownerScreenname,
+  views_total,
   duration 
 }: MovieCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+
+  const formatDuration = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60)
+    const remainingSeconds = seconds % 60
+    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
+  }
+
+  const formatViews = (views: number) => {
+    if (views >= 1000000) {
+      return `${(views / 1000000).toFixed(1)}M views`
+    } else if (views >= 1000) {
+      return `${(views / 1000).toFixed(1)}K views`
+    }
+    return `${views} views`
+  }
 
   return (
     <motion.div
@@ -34,7 +49,7 @@ export default function MovieCard({
       onMouseLeave={() => setIsHovered(false)}
     >
       <img
-        src={image}
+        src={thumbnail_480_url}
         alt={title}
         className="h-[157px] w-[279px] rounded-sm object-cover md:rounded"
       />
@@ -72,11 +87,11 @@ export default function MovieCard({
 
           <div className="space-y-2">
             <div className="flex items-center space-x-2 text-sm">
-              <span className="font-semibold text-green-500">{rating}</span>
-              <span className="text-gray-400">{year}</span>
-              <span className="text-gray-400">{duration}</span>
+              <span className="font-semibold text-green-500">{channel}</span>
+              {duration && <span className="text-gray-400">{formatDuration(duration)}</span>}
+              {views_total && <span className="text-gray-400">{formatViews(views_total)}</span>}
             </div>
-            <p className="text-xs text-gray-400 line-clamp-2">{description}</p>
+            <p className="text-xs text-gray-400 line-clamp-2">{ownerScreenname}</p>
           </div>
         </motion.div>
       )}
