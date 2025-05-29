@@ -16,7 +16,7 @@ export default function Home() {
   const categories = getCategories()
 
   return (
-    <main className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
+    <main className="relative bg-gradient-to-b from-gray-900/10 to-[#010511]">
       {/* Header */}
       <header className="fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all lg:px-16 lg:py-6">
         <div className="flex items-center space-x-2 md:space-x-10">
