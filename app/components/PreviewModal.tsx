@@ -23,6 +23,10 @@ export default function PreviewModal({ isOpen, onClose, videoData }: PreviewModa
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
   }
 
+  // Extract video ID from the URL
+  const videoId = videoData.url.split('/').pop()?.split('?')[0]
+  const embedUrl = `https://www.dailymotion.com/embed/video/${videoId}?autoplay=1&mute=1`
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -43,12 +47,11 @@ export default function PreviewModal({ isOpen, onClose, videoData }: PreviewModa
             >
               {/* Video Preview */}
               <div className="relative aspect-video">
-                <video
-                  src={videoData.url}
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  muted
-                  loop
+                <iframe
+                  src={embedUrl}
+                  className="w-full h-full"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
                 />
                 <button
                   onClick={onClose}
@@ -74,7 +77,7 @@ export default function PreviewModal({ isOpen, onClose, videoData }: PreviewModa
                 <div className="mt-4">
                   <h2 className="text-2xl font-bold text-white">{videoData.title}</h2>
                   <div className="mt-2 flex items-center space-x-2 text-sm text-gray-400">
-                    <span>{videoData.channel}</span>
+                    <span>{videoData.channel.toUpperCase()}</span>
                     <span>•</span>
                     <span>{formatDuration(videoData.duration)}</span>
                     <span>•</span>
