@@ -23,7 +23,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const searchQuery = searchParams.q || ''
   const currentPage = Number(searchParams.page) || 1
   const currentSort = searchParams.sort || 'relevance'
-  const searchData = searchQuery ? await getSearchResults(searchQuery, currentPage, 20, currentSort) : { results: [], pagination: { currentPage: 1, hasMore: false, totalPages: 0, totalResults: 0 } }
+  
+  // Convert slugified query back to original format for API call
+  const originalQuery = searchQuery.split('-').join(' ')
+  const searchData = searchQuery ? await getSearchResults(originalQuery, currentPage, 20, currentSort) : { results: [], pagination: { currentPage: 1, hasMore: false, totalPages: 0, totalResults: 0 } }
 
   return (
     <main className="relative bg-gradient-to-b from-gray-900/10 to-[#010511]">
@@ -33,7 +36,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         <div className="px-4 md:px-16">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-2xl font-bold md:text-4xl">
-              Search Results for: {searchQuery}
+              Search Results for: {originalQuery}
             </h1>
             {searchQuery && <SortButton />}
           </div>
@@ -63,7 +66,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 </>
               ) : (
                 <div className="text-gray-400">
-                  <p>No results found for "{searchQuery}"</p>
+                  <p>No results found for "{originalQuery}"</p>
                 </div>
               )}
             </div>

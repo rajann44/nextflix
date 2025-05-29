@@ -9,7 +9,7 @@ interface CachedMovies {
 
 let cachedMovies: CachedMovies | null = null;
 
-function slugify(text: string): string {
+export function slugify(text: string): string {
     return text
         .toLowerCase()
         .replace(/[&]/g, 'and')

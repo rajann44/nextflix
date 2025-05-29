@@ -25,7 +25,7 @@ export default function PaginationControls({
     if (isCategory) {
       router.push(`/categories/${searchQuery}?page=${newPage}`)
     } else {
-      router.push(`/search?q=${encodeURIComponent(searchQuery)}&page=${newPage}`)
+      router.push(`/search?q=${searchQuery}&page=${newPage}`)
     }
   }
 

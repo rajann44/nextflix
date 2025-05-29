@@ -3,7 +3,8 @@
 import { useState, useRef, useEffect } from 'react'
 import NetflixLogo from './NetflixLogo'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { slugify } from '../utils/movieData'
 
 export default function Header() {
   const [showUserMenu, setShowUserMenu] = useState(false)
@@ -11,6 +12,7 @@ export default function Header() {
   const [showSearch, setShowSearch] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const searchInputRef = useRef<HTMLInputElement>(null)
+  const searchParams = useSearchParams()
   const [notifications] = useState([
     {
       id: 1,
@@ -39,6 +41,15 @@ export default function Header() {
 
   const router = useRouter()
 
+  // Set search query from URL when component mounts or URL changes
+  useEffect(() => {
+    const query = searchParams.get('q')
+    if (query) {
+      setSearchQuery(query.split('-').join(' '))
+      setShowSearch(true)
+    }
+  }, [searchParams])
+
   // Focus search input when search is shown
   useEffect(() => {
     if (showSearch && searchInputRef.current) {
@@ -50,7 +61,8 @@ export default function Header() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+      const slugifiedQuery = slugify(searchQuery.trim())
+      router.push(`/search?q=${slugifiedQuery}`)
       setShowSearch(false)
       setSearchQuery('')
     }
