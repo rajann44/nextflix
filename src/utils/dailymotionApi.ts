@@ -8,6 +8,17 @@ export class DailymotionApiUtil {
     private static readonly DEFAULT_FIELDS = 'id,title,channel,thumbnail_480_url,url,owner.screenname,views_total,duration';
     private static readonly DEFAULT_LIMIT = 36;
 
+    public static readonly CHANNEL_WORDS = [
+        'Spotlight',
+        'Picks',
+        'Essentials',
+        'Briefs',
+        'Latest',
+        'Now'
+    ];
+
+    private static channelWordIndex = 0;
+
     /**
      * Fetches trending videos from Dailymotion API
      * @param options Optional parameters to customize the request
@@ -85,10 +96,14 @@ export class DailymotionApiUtil {
      * @returns Transformed DailymotionVideo
      */
     private static transformVideo(video: any): DailymotionVideo {
+        const channel = String(video.channel || '');
+        const specialWord = this.CHANNEL_WORDS[this.channelWordIndex];
+        this.channelWordIndex = (this.channelWordIndex + 1) % this.CHANNEL_WORDS.length;
+        
         return {
             id: String(video.id || ''),
             title: String(video.title || ''),
-            channel: String(video.channel || ''),
+            channel: `${channel} - ${specialWord}`,
             thumbnail_480_url: String(video.thumbnail_480_url || ''),
             url: String(video.url || ''),
             'owner.screenname': video['owner.screenname'] || video.owner_screenname || '',

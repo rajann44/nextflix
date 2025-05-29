@@ -14,7 +14,7 @@ export default function Banner({ title, description, rating, year, seasons }: Ba
   return (
     <div className="relative pb-24 lg:space-y-8 lg:pl-16">
       <div className="flex max-w-6xl flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-8">
-        <div className="absolute left-0 top-0 -z-10 h-[95vh] w-screen">
+        <div className="absolute left-0 top-0 -z-10 h-[57vh] w-screen">
           <img
             src="https://image.tmdb.org/t/p/original/49WJfeN0moxb9IPfGn8AIqMGskD.jpg"
             alt="Banner"

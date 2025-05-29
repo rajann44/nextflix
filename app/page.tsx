@@ -54,7 +54,7 @@ export default async function Home() {
       </header>
 
       {/* Banner */}
-      <div className="relative h-[56.25vw]">
+      <div className="relative h-[33.75vw]">
         <Image
           src="/banner.jpg"
           alt="Banner"
@@ -89,7 +89,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <section className="space-y-8 pb-24">
+      <section className="space-y-8 pb-24 bg-gradient-to-b from-[#010511] via-[#010511]/95 to-[#010511]">
         {channelMovies.map(({ channel, movies }) => (
           <div key={channel} className="space-y-4">
             <h2 className="text-lg md:text-xl px-4 lg:px-16 capitalize">{channel}</h2>
