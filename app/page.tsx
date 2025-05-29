@@ -51,7 +51,7 @@ export default async function Home() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#010511] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#010511] via-[#010511]/80 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-4 md:p-16">
           <h1 className="text-4xl font-bold text-white md:text-6xl">Welcome to Nextflix</h1>
           <p className="mt-4 max-w-md text-lg text-white md:text-xl">
@@ -75,7 +75,7 @@ export default async function Home() {
       </section>
 
       {/* Movie Categories */}
-      <section className="relative space-y-0.5 md:space-y-2">
+      <section className="relative space-y-0.5 md:space-y-2 bg-gradient-to-b from-[#010511]/80 to-[#010511]">
         {Object.entries(moviesByCategory).map(([category, movies]) => (
           <div key={category} className="space-y-0.5 md:space-y-2">
             <h2 className="px-4 lg:px-16 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
