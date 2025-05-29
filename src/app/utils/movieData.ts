@@ -42,7 +42,7 @@ export async function getAllMovies(): Promise<CachedMovies> {
     }
 }
 
-export async function getMoviesByCategory(category: string): Promise<Movie[]> {
+export async function getMoviesByCategory(category: string, page: number = 1, limit: number = 20): Promise<{ results: Movie[], pagination: { currentPage: number, hasMore: boolean, totalPages: number, totalResults: number } }> {
     // Find the channel key for the given category
     const channelMap = {
         'Music': 'MUSIC',
@@ -56,12 +56,40 @@ export async function getMoviesByCategory(category: string): Promise<Movie[]> {
 
     const channelKey = channelMap[category as keyof typeof channelMap];
     if (!channelKey) {
-        return [];
+        return {
+            results: [],
+            pagination: {
+                currentPage: 1,
+                hasMore: false,
+                totalPages: 0,
+                totalResults: 0
+            }
+        };
     }
 
-    // Fetch 20 videos for the category
-    const response = await DailymotionApiUtil.fetchVideosByChannel(channelKey, { limit: 20 });
-    return response.list;
+    try {
+        const response = await DailymotionApiUtil.fetchVideosByChannel(channelKey, { limit, page });
+        return {
+            results: response.list,
+            pagination: {
+                currentPage: response.page || 1,
+                hasMore: response.has_more || false,
+                totalPages: Math.ceil((response.total || 0) / limit),
+                totalResults: response.total || 0
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching category movies:', error);
+        return {
+            results: [],
+            pagination: {
+                currentPage: 1,
+                hasMore: false,
+                totalPages: 0,
+                totalResults: 0
+            }
+        };
+    }
 }
 
 export async function getMovieById(id: string): Promise<Movie | undefined> {
@@ -90,15 +118,31 @@ export async function getChannels(): Promise<string[]> {
     return Array.from(uniqueChannels);
 }
 
-export async function getSearchResults(query: string) {
+export async function getSearchResults(query: string, page: number = 1, limit: number = 20) {
     try {
         const response = await fetch(
-            `https://api.dailymotion.com/videos?search=${encodeURIComponent(query)}&fields=id,title,channel,thumbnail_480_url,url,owner.screenname,views_total,duration&limit=20`
+            `https://api.dailymotion.com/videos?search=${encodeURIComponent(query)}&fields=id,title,channel,thumbnail_480_url,url,owner.screenname,views_total,duration&limit=${limit}&page=${page}`
         )
         const data = await response.json()
-        return data.list || []
+        return {
+            results: data.list || [],
+            pagination: {
+                currentPage: data.page || 1,
+                hasMore: data.has_more || false,
+                totalPages: Math.ceil((data.total || 0) / limit),
+                totalResults: data.total || 0
+            }
+        }
     } catch (error) {
         console.error('Error fetching search results:', error)
-        return []
+        return {
+            results: [],
+            pagination: {
+                currentPage: 1,
+                hasMore: false,
+                totalPages: 0,
+                totalResults: 0
+            }
+        }
     }
 } 

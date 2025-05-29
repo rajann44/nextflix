@@ -28,12 +28,14 @@ export class DailymotionApiUtil {
         limit?: number;
         fields?: string;
         sort?: string;
+        page?: number;
     }): Promise<DailymotionApiResponse> {
         const params = new URLSearchParams({
             'channel': this.CHANNELS[channel],
             'sort': options?.sort || 'trending',
             'fields': options?.fields || this.DEFAULT_FIELDS,
-            'limit': String(options?.limit || this.DEFAULT_LIMIT)
+            'limit': String(options?.limit || this.DEFAULT_LIMIT),
+            'page': String(options?.page || 1)
         });
 
         const requestUrl = `${this.BASE_URL}?${params.toString()}`;

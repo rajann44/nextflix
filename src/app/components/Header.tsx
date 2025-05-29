@@ -67,25 +67,25 @@ export default function Header() {
             <Link href="/" className="headerLink">Home</Link>
           </li>
           <li>
-            <Link href="/category/Music" className="headerLink">Music</Link>
+            <Link href="/categories/Music" className="headerLink">Music</Link>
           </li>
           <li>
-            <Link href="/category/Comedy%20%26%20Entertainment" className="headerLink">Comedy</Link>
+            <Link href="/categories/Comedy%20%26%20Entertainment" className="headerLink">Comedy</Link>
           </li>
           <li>
-            <Link href="/category/Gaming" className="headerLink">Gaming</Link>
+            <Link href="/categories/Gaming" className="headerLink">Gaming</Link>
           </li>
           <li>
-            <Link href="/category/People%20%26%20Culture" className="headerLink">Culture</Link>
+            <Link href="/categories/People%20%26%20Culture" className="headerLink">Culture</Link>
           </li>
           <li>
-            <Link href="/category/Lifestyle%20%26%20How-To" className="headerLink">Lifestyle</Link>
+            <Link href="/categories/Lifestyle%20%26%20How-To" className="headerLink">Lifestyle</Link>
           </li>
           <li>
-            <Link href="/category/Education" className="headerLink">Education</Link>
+            <Link href="/categories/Education" className="headerLink">Education</Link>
           </li>
           <li>
-            <Link href="/category/News" className="headerLink">News</Link>
+            <Link href="/categories/News" className="headerLink">News</Link>
           </li>
         </ul>
       </div>

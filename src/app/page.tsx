@@ -3,6 +3,7 @@ import MovieCard from './components/MovieCard'
 import { getAllMovies } from './utils/movieData'
 import Image from 'next/image'
 import Header from './components/Header'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Nextflix',
@@ -52,17 +53,27 @@ export default async function Home() {
       <section className="relative space-y-8 bg-gradient-to-b from-[#010511]/80 to-[#010511]">
         {Object.entries(moviesByCategory).map(([category, movies]) => (
           <div key={category} className="space-y-4">
-            <h2 className="px-4 lg:px-16 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
-              {category}
-            </h2>
+            <Link href={`/categories/${encodeURIComponent(category)}`}>
+              <h2 className="px-4 lg:px-16 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
+                {category}
+              </h2>
+            </Link>
             <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
-              {movies.map((movie, index) => (
+              {movies.slice(0, 10).map((movie, index) => (
                 <MovieCard
                   key={movie.id}
                   {...movie}
                   index={index}
                 />
               ))}
+            </div>
+            <div className="px-4 lg:px-16">
+              <Link
+                href={`/categories/${encodeURIComponent(category)}`}
+                className="text-sm text-gray-400 hover:text-white transition duration-200"
+              >
+                See all →
+              </Link>
             </div>
           </div>
         ))}

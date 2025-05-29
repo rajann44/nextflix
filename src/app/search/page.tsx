@@ -2,10 +2,13 @@ import { Metadata } from 'next'
 import Header from '../components/Header'
 import MovieCard from '../components/MovieCard'
 import { getSearchResults } from '../utils/movieData'
+import PaginationControls from '../components/PaginationControls'
+import { DailymotionVideo } from '../types/dailymotion'
 
 interface SearchPageProps {
   searchParams: {
     q?: string
+    page?: string
   }
 }
 
@@ -16,7 +19,8 @@ export const metadata: Metadata = {
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const searchQuery = searchParams.q || ''
-  const searchResults = searchQuery ? await getSearchResults(searchQuery) : []
+  const currentPage = Number(searchParams.page) || 1
+  const searchData = searchQuery ? await getSearchResults(searchQuery, currentPage) : { results: [], pagination: { currentPage: 1, hasMore: false, totalPages: 0, totalResults: 0 } }
 
   return (
     <main className="relative bg-gradient-to-b from-gray-900/10 to-[#010511]">
@@ -30,17 +34,27 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           
           {searchQuery ? (
             <div>
-              {searchResults.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {searchResults.map((movie: any, index: number) => (
-                    <div key={movie.id} className="aspect-[16/9]">
-                      <MovieCard
-                        {...movie}
-                        index={index}
-                      />
-                    </div>
-                  ))}
-                </div>
+              {searchData.results.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {searchData.results.map((movie: DailymotionVideo, index: number) => (
+                      <div key={movie.id} className="aspect-[16/9]">
+                        <MovieCard
+                          {...movie}
+                          index={index}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-8 flex justify-center">
+                    <PaginationControls
+                      currentPage={searchData.pagination.currentPage}
+                      totalPages={searchData.pagination.totalPages}
+                      hasMore={searchData.pagination.hasMore}
+                      searchQuery={searchQuery}
+                    />
+                  </div>
+                </>
               ) : (
                 <div className="text-gray-400">
                   <p>No results found for "{searchQuery}"</p>
