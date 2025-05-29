@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import NetflixLogo from './NetflixLogo'
 
 export default function Header() {
   const [showUserMenu, setShowUserMenu] = useState(false)
@@ -51,13 +52,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all lg:px-16 lg:py-6">
       <div className="flex items-center space-x-2 md:space-x-10">
-        <img
-          src="https://rb.gy/ulxxee"
-          alt="Netflix"
-          width={120}
-          height={120}
-          className="cursor-pointer object-contain"
-        />
+        <NetflixLogo />
         <ul className="hidden space-x-4 md:flex">
           <li className="headerLink">Home</li>
           <li className="headerLink">Music</li>
