@@ -52,7 +52,7 @@ const Footer = () => {
         </div>
 
         <div className="text-xs text-gray-400">
-          <p>© 1997-{new Date().getFullYear()} Netflix, Inc.</p>
+          <p>© 1997-{new Date().getFullYear()} Nextflix, Inc.</p>
         </div>
       </div>
     </footer>
