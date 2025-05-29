@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <main className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
       {/* Header */}
-      <header className="fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all lg:px-10 lg:py-6">
+      <header className="fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all lg:px-16 lg:py-6">
         <div className="flex items-center space-x-2 md:space-x-10">
           <img
             src="https://rb.gy/ulxxee"
@@ -64,8 +64,8 @@ export default function Home() {
       <section className="space-y-24 pb-24">
         {/* Trending Now */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">Trending Now</h2>
-          <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
+          <h2 className="text-2xl font-bold md:text-4xl px-4 lg:px-16">Trending Now</h2>
+          <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
             {trendingMovies.map((movie, index) => (
               <MovieCard
                 key={movie.id}
@@ -78,8 +78,8 @@ export default function Home() {
 
         {/* Popular on Netflix */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">Popular on Netflix</h2>
-          <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
+          <h2 className="text-2xl font-bold md:text-4xl px-4 lg:px-16">Popular on Netflix</h2>
+          <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
             {popularMovies.map((movie, index) => (
               <MovieCard
                 key={movie.id}
@@ -92,8 +92,8 @@ export default function Home() {
 
         {/* Continue Watching */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">Continue Watching</h2>
-          <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
+          <h2 className="text-2xl font-bold md:text-4xl px-4 lg:px-16">Continue Watching</h2>
+          <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
             {continueWatchingMovies.map((movie, index) => (
               <MovieCard
                 key={movie.id}
@@ -106,8 +106,8 @@ export default function Home() {
 
         {/* My List */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">My List</h2>
-          <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
+          <h2 className="text-2xl font-bold md:text-4xl px-4 lg:px-16">My List</h2>
+          <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
             {myListMovies.map((movie, index) => (
               <MovieCard
                 key={movie.id}
@@ -120,8 +120,8 @@ export default function Home() {
 
         {/* Categories */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">Categories</h2>
-          <div className="grid grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+          <h2 className="text-2xl font-bold md:text-4xl px-4 lg:px-16">Categories</h2>
+          <div className="grid grid-cols-2 gap-4 px-4 lg:px-16 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
             {categories.map((category) => (
               <div
                 key={category}
