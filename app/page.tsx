@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   description: 'A Nextflix built with Next.js and TypeScript',
 }
 
-export default function Home() {
-  const channels = getChannels()
-  const videogamesMovies = getMoviesByChannel('videogames')
-  const animalsMovies = getMoviesByChannel('animals')
-  const shortfilmsMovies = getMoviesByChannel('shortfilms')
-  const newsMovies = getMoviesByChannel('news')
+export default async function Home() {
+  const channels = await getChannels()
+  const videogamesMovies = await getMoviesByChannel('videogames')
+  const animalsMovies = await getMoviesByChannel('animals')
+  const shortfilmsMovies = await getMoviesByChannel('shortfilms')
+  const newsMovies = await getMoviesByChannel('news')
 
   return (
     <main className="relative bg-gradient-to-b from-gray-900/10 to-[#010511]">
