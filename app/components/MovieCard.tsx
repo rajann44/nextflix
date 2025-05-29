@@ -29,7 +29,7 @@ export default function MovieCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative h-[157px] w-[279px] flex-shrink-0 cursor-pointer transition duration-200 ease-out md:hover:scale-105"
+      className="relative h-[157px] w-[279px] flex-shrink-0 cursor-pointer transition duration-300 ease-out md:hover:scale-110 md:hover:z-20"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -40,9 +40,10 @@ export default function MovieCard({
       />
       {isHovered && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="absolute inset-0 z-10 flex flex-col justify-between bg-black/80 p-2 md:p-4"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+          className="absolute inset-0 z-10 flex flex-col justify-between bg-black/90 p-2 md:p-4 rounded"
         >
           <div className="flex items-center justify-between">
             <div className="flex space-x-2">
