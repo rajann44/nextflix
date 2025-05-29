@@ -1,0 +1,281 @@
+{
+  "trending": [
+    {
+      "id": "81993917",
+      "title": "Sikandar",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABRM2R9Vi18xYnt-EqSA_ecN8NzJpzfNvju4q7qkVpp9VjNhb4LRmgaapP_o2NA_jUZOneNDCSzODhM91Pj5Ex6JYr7Ox9ubz59RfEwho_E72rDQweagnqxvnB_E6wMOtFohjghW0P74lj0ltaQTYyFoWISPLwJ7AkTzmlNW0iwPL.webp?r=8f6",
+      "description": "When his foster father is murdered, a young man determined to protect his family finds himself entangled in a web of crime, deceit and political ambition.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "2025",
+      "duration": "",
+      "category": "trending"
+    },
+    {
+      "id": "873159",
+      "title": "Primal Fear",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABVq9nLsgKicqLTx8puWxLv7tJkgLYms_qqrR4z4-MKX2uM5XcDgFjchMfWwfVEyUHg5TkNy5RSWNVdCIiiPh85VWbz5c1o5dLaA.webp?r=176",
+      "description": "When a young altar boy is accused of murdering a priest, a hotshot Chicago lawyer takes on his case, believing the teen is innocent.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "1996",
+      "duration": "2h 10m",
+      "category": "trending"
+    },
+    {
+      "id": "81757969",
+      "title": "Cold Case: The Tylenol Murders",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABY9IRhj3mgyPdI7uX7Kelg8_aXVYv7ryvqu1_KA_EagB-OPCK1buqf_W_HbO0divTi4rrYuiQ1i4hIXpIfpYrngfK17rPvOAxFwMQf_qOiFOFetxl7QnUcqA-g_mwoyoP3MAspuNXifBFqEIXmKOaz8CAX2mR5j3UA-pTAm0YQDzGmYLrP45m8Oh6EffHvfbyE5DJ0sxogGpkdMrb5zlGfkwHbzzbj5KEtjmWErM-PrXBsH7nvd4Ol9pIvRsv1oXR4k.jpg?r=2d1",
+      "description": "This docuseries revisits the 1982 Tylenol poisonings and the nationwide panic that ensued while investigators searched for the still-unknown culprit.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "2024",
+      "duration": "7 Episodes",
+      "category": "trending"
+    },
+    {
+      "id": "81589551",
+      "title": "Sirens",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABSnOZCLgCywe64f_2L9X-LHUb0QmbHs1trnCRDg-I5XC3Go89Ndi9IXDQWhYJ9yOz65UxvYFRZQ2L4INP3P3sTFBSxb860KXU1fjTA8lBx6G-TZ2PR9vXxoDRWKp5PlANabDvKcI3EJ391_WhEmt7JHybXWSqaRs1G6fVTBhzQ2MHf8_t2lYZ6MnKRBBp3YwuyRuois3yJpaKL0wVpnwkXF5xewIDzq8l-SVjr8rHxTypYepVCgq248B-wJdky4pqHs.jpg?r=bca",
+      "description": "Amidst the chaos of Beirut, the all-female ambulance squad of the Lebanese Red Cross races to save lives on the front lines of their fractured city.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "2024",
+      "duration": "1h 28m",
+      "category": "trending"
+    },
+    {
+      "id": "81681535",
+      "title": "When Life Gives You Tangerines",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABUEYm4Gm0yK9k7Fs322Paqb-wZ_fW0E_dOPJ485B3JlER20-Ypq0xgViBkTYdqi9CIe7BB8P2xTqKd0zfvxyH0_l4fpBGg82rqcM4M0ILkamF36Q90ojLfnTzWaB65-bn-7U.jpg?r=d18",
+      "description": "A rebellious teen finds new purpose in the literary arts after she's exiled to Jeju Island, where she forms a surprising bond with a steadfast poet.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "2025",
+      "duration": "16 Episodes",
+      "category": "trending"
+    },
+    {
+      "id": "81999621",
+      "title": "HIT: The Third Case",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABTjma2NwJMpx2GnAr75hwz9el15OBtzpdvomsPz11lySFoT5oNSCSMeUtM_M-I4Bmac1fNHzv5udnbFNbkDbBjRoaomNWS2BjzQewgiiKG-YibbuBi8Hgm_QHK92mAPzFn0bklB0kORkHCm98x3e5ekYLGRmNB9bQTn9CJfqu0p2.webp?r=d3f",
+      "description": "A dutiful police officer’s relentless pursuit of a cold-blooded serial killer takes a toll on his personal life as he races to stop the next murder.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "2024",
+      "duration": "",
+      "category": "trending"
+    },
+    {
+      "id": "11819086",
+      "title": "The Truman Show",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABW26XRIGmRiZ783g4vNoT7vIUqpAoAyy0fK1OVKHIiy4RhwtPF8gHvkCSPYftTddo98kRSESSirbEt-ZevZveeLp01LkryAI0_U.webp?r=278",
+      "description": "When an insurance agent realizes his entire life is a reality show created for the entertainment of millions, the unwitting star must decide how to act.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "1998",
+      "duration": "1h 42m",
+      "category": "trending"
+    },
+    {
+      "id": "81512194",
+      "title": "Fear Street: Prom Queen",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABUExEE70x6FSX-M7J1eNoe9mkuQcQi7_6c1iiGSGsS6NcbdMDr2gWObZn8SSO0L2RHbkmsDruHfUqwJQYmYTGwObvGvm7e0XF4BsmRT4f3U1-sSosmGejQxvqoN4kg2fEg8t3YqwkVuJ4yiBRkcz6rfmGlemhJWh6wUpCL9LVnY3FaOw9rbWiKHc62pWK4ZNOEzi5hNzpQ_mpkBJTD2hI2DlghKZoPjqRtN387ljuM0CO4fRA0oiEFhue8JCz-x_Sr8.jpg?r=655",
+      "description": "During prom season in 1988 Shadyside, a masked outsider with a vendetta suddenly appears to wreak bloody havoc on the town's popular clique.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "2025",
+      "duration": "",
+      "category": "trending"
+    }
+  ],
+  "popular": [
+    {
+      "id": "60036246",
+      "title": "Collateral",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABZdsFvDbFu5jI-Ph7-u3j6N3WF9aR741zqoebooxxUMpGTpxM1SjcTi1mquWr0UwL64QUx7ZbZOv9AS0cXWXkLJe19amc0A7JyfiUvl8m2g1OdPijuP1DygOT4YGnqW6YyWI71mZM9OCtBeDWKwZc6Zz0-mCHWGQH5c.webp?r=831",
+      "description": "Cab driver Max picks up a man who offers him $600 to drive him around. But the promise of easy money sours when he realizes his fare is an assassin.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "2004",
+      "duration": "2h 0m",
+      "category": "popular"
+    },
+    {
+      "id": "70100377",
+      "title": "Doubt",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABbE0choVLn4Ns-X1AZp8ITB9ih4_oVyRQnSb7o8JMPbrM_8AKLu6MlGXsO1uQMEYaweTuoZqE5p1253Mf1MTfvMuHlvZ7_J9AwSOYxnMCmSTDlD_xMxgAFBU-pKFBBH7HCXuxqZy4FDYAWNogSiqR75meHE98wNwNZCmE1M-TQ.webp?r=e79",
+      "description": "Sister Aloysius begins to have doubts about doting Father Flynn, who seems to have become overly involved in the life of an African American pupil.",
+      "rating": "Suitable for ages 6 and up",
+      "year": "2008",
+      "duration": "1h 43m",
+      "category": "popular"
+    },
+    {
+      "id": "80000644",
+      "title": "The Theory of Everything",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABVJlOxiTYR4sxCL6c29eEAJ_bpOqavzgZwlk98AyO41l9cZkBigSl7iLnPjnBNopaq0Q6w8PgywKsNiVJC3dI4HBgRnxX6VX9GY.webp?r=0ef",
+      "description": "Physicist Stephen Hawking and wife Jane Wilde struggle to balance his advancing illness and rising fame with her search for a purpose beyond marriage.",
+      "rating": "Suitable for all audiences",
+      "year": "2014",
+      "duration": "2h 3m",
+      "category": "popular"
+    },
+    {
+      "id": "70108777",
+      "title": "Inglourious Basterds",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABXe0SUegt_Xl2QH1iKOFM51xklgj0UcUZO2Qt74EihUctdpW_EmcUGsn0vXYSXIWs-tT31VANBGWo8XBGiMl7BUPVOn5i4pULV7zbjP-gFVtm395J7gpERLxI-dTfL0diFYauhLTgQL1DOmpxzuAirWtf1SfnEhQAX6xw-v6mg.webp?r=de5",
+      "description": "In Nazi-occupied France, American soldiers plan a fateful face-off to take out leaders of the Third Reich during a propaganda film premiere.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "2009",
+      "duration": "2h 33m",
+      "category": "popular"
+    },
+    {
+      "id": "81221938",
+      "title": "Parasite",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABdnWwLjiwK6fLu4pIfuekvohqq6fmT0dVn4h9pqK-RkcBTNZYeIeoLofG0L0llByrAdk5zlDz00QPf5m5ZkpFOjnDFOV4MJPwCU.webp?r=216",
+      "description": "One by one, the crafty members of a destitute family insinuate themselves into the household staff of a wealthy couple living in oblivious privilege.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "2019",
+      "duration": "2h 12m",
+      "category": "popular"
+    },
+    {
+      "id": "80117799",
+      "title": "Arrival",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABc5QLscGvmre_v-qqMvNNCMpohkEy63fmi_muXuq7VrCecM-qbOyFUSCKfjslpUKMxv35oggpIRo41_rBLlO8QiZIHq3JTa40Gw.webp?r=5a7",
+      "description": "When alien ships land around the globe, a language expert tasked with deciphering their communications uncovers a life-altering message.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "2016",
+      "duration": "1h 56m",
+      "category": "popular"
+    },
+    {
+      "id": "937499",
+      "title": "Scent of a Woman",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABT-MjM58EwJNl5_tcaB8zaud6VyTLDmSSwJ6WVvpodGLK3cSSJZaP-b9_73MmoQwb7auGXlEyPfZwCJg3NsY54zWuJNRIZCNX70.webp?r=6c7",
+      "description": "Hoping to earn some cash over a holiday weekend, a prep-school student agrees to take care of a cantankerous retired Army colonel who's lost his sight.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "1992",
+      "duration": "2h 36m",
+      "category": "popular"
+    },
+    {
+      "id": "70132721",
+      "title": "The Social Network",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABQQFN6tkXIvX7mVgEpPYRf8Krt7CVpfRJflJxfAUxYgQVhkbNnEcgBWVnj2CY0BBr4i3_BDjVKnjfwk8gb2thzb9XuW31-0x7ns.webp?r=698",
+      "description": "Harvard sophomore Mark Zuckerberg pursues an idea that propels him to internet success, bringing in legal trouble and costing him friendships.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "2010",
+      "duration": "2h 0m",
+      "category": "popular"
+    }
+  ],
+  "continueWatching": [
+    {
+      "id": "81011159",
+      "title": "Little Things",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABb0neLZ35YRgYXNrADDb8iiqDcKVEISuigcSgl4oxLzHmqfoKnymZ9jzvehWIt8BysVLIe6J1sUcvRqoOOdRIguUqtzihxfbWHzLIO6RE2l72UrwqYfam2ks0KZx0iEESKTe.jpg?r=7de",
+      "description": "A cohabiting couple in their 20s navigate the ups and downs of work, modern-day relationships and finding themselves in contemporary Mumbai.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "2021",
+      "duration": "4 Seasons",
+      "category": "continueWatching"
+    },
+    {
+      "id": "70136120",
+      "title": "The Office (U.S.)",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABZtUXYMy5fwkOx04LryyBAZchOoSJRqqvWgXtPT0WXPPUmIYie5DJDqJI44APRqWmIT5dlKUHO_O-eet6sURs0dl0Yo8CZZSkG4.webp?r=80e",
+      "description": "This hit comedy chronicles the foibles of disgruntled office workers — led by deluded boss Michael Scott — at the Dunder Mifflin paper company.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "2012",
+      "duration": "9 Seasons",
+      "category": "continueWatching"
+    },
+    {
+      "id": "81704205",
+      "title": "Deva",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABXWj0zdCdAItWudr7euOYNM0RlTsw7pFpKESLJ0vo03Wi40B69sI3gkVWzi7s2KvUBtbKcg1_6zNzOp1922QXCp2kdu-9yeYihs.webp?r=300",
+      "description": "Working on a complicated case, a fierce young police officer goes rogue to dismantle a lethal web of corruption and deceit — one epic battle at a time.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "2025",
+      "duration": "2h 34m",
+      "category": "continueWatching"
+    },
+    {
+      "id": "11819086",
+      "title": "The Truman Show",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABW26XRIGmRiZ783g4vNoT7vIUqpAoAyy0fK1OVKHIiy4RhwtPF8gHvkCSPYftTddo98kRSESSirbEt-ZevZveeLp01LkryAI0_U.webp?r=278",
+      "description": "When an insurance agent realizes his entire life is a reality show created for the entertainment of millions, the unwitting star must decide how to act.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "1998",
+      "duration": "1h 43m",
+      "category": "continueWatching"
+    },
+    {
+      "id": "70059993",
+      "title": "Atonement",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABYExN9IpY7HT2SZ9vwVyl6Ipkz6UhO1OfK7PnRSnkZhZpo6m4SSamsHuDmUcbXVAYom2Wgx5WBQpNt4S1REHyGKrKs5vUq5H8OI.webp?r=8ff",
+      "description": "Troubled by her sister's romance with the housekeeper's son, a young girl makes a false accusation that will change the course of their lives forever.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "2007",
+      "duration": "2h 3m",
+      "category": "continueWatching"
+    },
+    {
+      "id": "81602976",
+      "title": "Anweshippin Kandethum",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABYSWCWNMRu35AXpa2cgGtwiEe_PBPCSW0dmkkOU-GTxVLli6YmjOgQAAktKcYi0x1ibmG5XgxTj-6Gw3r57UseXOfugqz2e7Dwk.webp?r=8e8",
+      "description": "Wrongfully suspended while pursuing the culprit in a missing persons case, a cop seeks redemption — and justice — when he gets a new assignment.",
+      "rating": "Suitable for ages 16 and up",
+      "year": "2024",
+      "duration": "2h 22m",
+      "category": "continueWatching"
+    },
+    {
+      "id": "937499",
+      "title": "Scent of a Woman",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABT-MjM58EwJNl5_tcaB8zaud6VyTLDmSSwJ6WVvpodGLK3cSSJZaP-b9_73MmoQwb7auGXlEyPfZwCJg3NsY54zWuJNRIZCNX70.webp?r=6c7",
+      "description": "Hoping to earn some cash over a holiday weekend, a prep-school student agrees to take care of a cantankerous retired Army colonel who's lost his sight.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "1992",
+      "duration": "2h 36m",
+      "category": "continueWatching"
+    },
+    {
+      "id": "81265958",
+      "title": "Bheed",
+      "image": "https://occ-0-1906-2773.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABbQsXRl23TU7DRWogB264GKUviLfNwab15w4z-ccpiMnDRvqTKcemL2nEv19AlTW_b04f1nE9YXDk5O6HM1E2aGuEX5gx7SRZRg.webp?r=7c8",
+      "description": "A border cop’s assignment to stop migrant workers from crossing during a lockdown erupts into a fight for humanity amid prejudice and suffering.",
+      "rating": "Suitable for ages 12 and up",
+      "year": "2023",
+      "duration": "1h 52m",
+      "category": "continueWatching"
+    }
+  ],
+  "myList": [
+    {
+      "id": "queens-gambit",
+      "title": "The Queen's Gambit",
+      "image": "https://image.tmdb.org/t/p/original/34OGjFEbHj0E3lE2w0iTUVq0CBz.jpg",
+      "description": "In a 1950s orphanage, a young girl reveals an astonishing talent for chess and begins an unlikely journey to stardom while grappling with addiction.",
+      "rating": "97% Match",
+      "year": "2020",
+      "duration": "1 Season",
+      "category": "myList"
+    }
+  ],
+  "categories": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Comedy",
+    "Crime",
+    "Documentary",
+    "Drama",
+    "Family",
+    "Fantasy",
+    "History",
+    "Horror",
+    "Music",
+    "Mystery",
+    "Romance",
+    "Science Fiction",
+    "TV Movie",
+    "Thriller",
+    "War",
+    "Western"
+  ]
+}

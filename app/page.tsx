@@ -1,102 +1,20 @@
 import { Metadata } from 'next'
 import MovieCard from './components/MovieCard'
 import Banner from './components/Banner'
+import { getMoviesByCategory, getCategories } from './utils/movieData'
 
 export const metadata: Metadata = {
   title: 'Netflix Clone',
   description: 'A Netflix clone built with Next.js and TypeScript',
 }
 
-const movies = [
-  {
-    title: 'Stranger Things',
-    image: 'https://image.tmdb.org/t/p/original/49WJfeN0moxb9IPfGn8AIqMGskD.jpg',
-    description: 'When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.',
-    rating: '98% Match',
-    year: '2016',
-    duration: '4 Seasons'
-  },
-  {
-    title: 'The Witcher',
-    image: 'https://image.tmdb.org/t/p/original/7vjaCdMw15FEbXyLQTVa04URsPm.jpg',
-    description: 'Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts.',
-    rating: '95% Match',
-    year: '2019',
-    duration: '3 Seasons'
-  },
-  {
-    title: 'Money Heist',
-    image: 'https://image.tmdb.org/t/p/original/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg',
-    description: 'Eight thieves take hostages and lock themselves in the Royal Mint of Spain as a criminal mastermind manipulates the police to carry out his plan.',
-    rating: '97% Match',
-    year: '2017',
-    duration: '5 Seasons'
-  },
-  {
-    title: 'Dark',
-    image: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
-    description: 'A missing child sets four families on a frantic hunt for answers as they unearth a mind-bending mystery that spans three generations.',
-    rating: '96% Match',
-    year: '2017',
-    duration: '3 Seasons'
-  },
-  {
-    title: 'The Crown',
-    image: 'https://image.tmdb.org/t/p/original/qZtAf8bZgqvM7Hgp3daiE6ME5xb.jpg',
-    description: 'This drama follows the political rivalries and romance of Queen Elizabeth II\'s reign and the events that shaped the second half of the 20th century.',
-    rating: '94% Match',
-    year: '2016',
-    duration: '6 Seasons'
-  },
-  {
-    title: 'Breaking Bad',
-    image: 'https://image.tmdb.org/t/p/original/3xwBYGxJXZ1gB5X1g6L9kq1KTlm.jpg',
-    description: 'A high school chemistry teacher turned methamphetamine manufacturer partners with a former student to secure his family\'s financial future.',
-    rating: '99% Match',
-    year: '2008',
-    duration: '5 Seasons'
-  },
-  {
-    title: 'Peaky Blinders',
-    image: 'https://image.tmdb.org/t/p/original/wiE9doxiLwq3WCGamDIOb2PqBqc.jpg',
-    description: 'A notorious gang in 1919 Birmingham, England, is led by the fierce Tommy Shelby, a crime boss set on moving up in the world no matter the cost.',
-    rating: '98% Match',
-    year: '2013',
-    duration: '6 Seasons'
-  },
-  {
-    title: 'The Queen\'s Gambit',
-    image: 'https://image.tmdb.org/t/p/original/34OGjFEbHj0E3lE2w0iTUVq0CBz.jpg',
-    description: 'In a 1950s orphanage, a young girl reveals an astonishing talent for chess and begins an unlikely journey to stardom while grappling with addiction.',
-    rating: '97% Match',
-    year: '2020',
-    duration: '1 Season'
-  }
-]
-
-const categories = [
-  'Action',
-  'Adventure',
-  'Animation',
-  'Comedy',
-  'Crime',
-  'Documentary',
-  'Drama',
-  'Family',
-  'Fantasy',
-  'History',
-  'Horror',
-  'Music',
-  'Mystery',
-  'Romance',
-  'Science Fiction',
-  'TV Movie',
-  'Thriller',
-  'War',
-  'Western'
-]
-
 export default function Home() {
+  const trendingMovies = getMoviesByCategory('trending')
+  const popularMovies = getMoviesByCategory('popular')
+  const continueWatchingMovies = getMoviesByCategory('continueWatching')
+  const myListMovies = getMoviesByCategory('myList')
+  const categories = getCategories()
+
   return (
     <main className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
       {/* Header */}
@@ -135,11 +53,11 @@ export default function Home() {
 
       {/* Banner */}
       <Banner
-        title="Stranger Things"
-        description="When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl."
-        rating="98% Match"
-        year="2016"
-        seasons="4 Seasons"
+        title={trendingMovies[0].title}
+        description={trendingMovies[0].description}
+        rating={trendingMovies[0].rating}
+        year={trendingMovies[0].year}
+        seasons={trendingMovies[0].duration}
       />
 
       {/* Content Rows */}
@@ -148,9 +66,9 @@ export default function Home() {
         <div className="space-y-4">
           <h2 className="text-2xl font-bold md:text-4xl">Trending Now</h2>
           <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
-            {movies.map((movie, index) => (
+            {trendingMovies.map((movie, index) => (
               <MovieCard
-                key={movie.title}
+                key={movie.id}
                 {...movie}
                 index={index}
               />
@@ -162,9 +80,9 @@ export default function Home() {
         <div className="space-y-4">
           <h2 className="text-2xl font-bold md:text-4xl">Popular on Netflix</h2>
           <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
-            {movies.slice(0, 6).map((movie, index) => (
+            {popularMovies.map((movie, index) => (
               <MovieCard
-                key={movie.title}
+                key={movie.id}
                 {...movie}
                 index={index}
               />
@@ -176,9 +94,9 @@ export default function Home() {
         <div className="space-y-4">
           <h2 className="text-2xl font-bold md:text-4xl">Continue Watching</h2>
           <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
-            {movies.slice(2, 8).map((movie, index) => (
+            {continueWatchingMovies.map((movie, index) => (
               <MovieCard
-                key={movie.title}
+                key={movie.id}
                 {...movie}
                 index={index}
               />
@@ -190,51 +108,9 @@ export default function Home() {
         <div className="space-y-4">
           <h2 className="text-2xl font-bold md:text-4xl">My List</h2>
           <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
-            {movies.slice(4, 8).map((movie, index) => (
+            {myListMovies.map((movie, index) => (
               <MovieCard
-                key={movie.title}
-                {...movie}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Award-Winning TV Shows */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">Award-Winning TV Shows</h2>
-          <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
-            {movies.slice(0, 4).map((movie, index) => (
-              <MovieCard
-                key={movie.title}
-                {...movie}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Watch Again */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">Watch Again</h2>
-          <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
-            {movies.slice(3, 7).map((movie, index) => (
-              <MovieCard
-                key={movie.title}
-                {...movie}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* New Releases */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">New Releases</h2>
-          <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
-            {movies.slice(1, 5).map((movie, index) => (
-              <MovieCard
-                key={movie.title}
+                key={movie.id}
                 {...movie}
                 index={index}
               />
@@ -253,41 +129,6 @@ export default function Home() {
               >
                 {category}
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Top 10 in TV Shows Today */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">Top 10 in TV Shows Today</h2>
-          <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
-            {movies.slice(0, 5).map((movie, index) => (
-              <div key={movie.title} className="relative">
-                <div className="absolute -left-2 -top-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-red-600 text-xl font-bold">
-                  {index + 1}
-                </div>
-                <MovieCard {...movie} index={index} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Netflix Originals */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">Netflix Originals</h2>
-          <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
-            {movies.slice(2, 6).map((movie, index) => (
-              <MovieCard key={movie.title} {...movie} index={index} />
-            ))}
-          </div>
-        </div>
-
-        {/* Because You Watched */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl">Because You Watched</h2>
-          <div className="flex space-x-4 overflow-x-scroll p-4 scrollbar-hide">
-            {movies.slice(4, 8).map((movie, index) => (
-              <MovieCard key={movie.title} {...movie} index={index} />
             ))}
           </div>
         </div>
