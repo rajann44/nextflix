@@ -9,7 +9,6 @@ interface MovieCardProps {
   index: number
   channel?: string
   'owner.screenname'?: string
-  views_total?: number
   duration?: number
 }
 
@@ -19,7 +18,6 @@ export default function MovieCard({
   index,
   channel,
   'owner.screenname': ownerScreenname,
-  views_total,
   duration 
 }: MovieCardProps) {
   const [isHovered, setIsHovered] = useState(false)
@@ -86,12 +84,12 @@ export default function MovieCard({
           </div>
 
           <div className="space-y-2">
+            <p className="text-sm font-medium text-white line-clamp-2">{title}</p>
             <div className="flex items-center space-x-2 text-sm">
+            {duration && <span className="text-gray-400">{formatDuration(duration)}</span>}
+            <span className="text-gray-400">{ownerScreenname}</span>
               <span className="font-semibold text-green-500">{channel}</span>
-              {duration && <span className="text-gray-400">{formatDuration(duration)}</span>}
-              {views_total && <span className="text-gray-400">{formatViews(views_total)}</span>}
             </div>
-            <p className="text-xs text-gray-400 line-clamp-2">{ownerScreenname}</p>
           </div>
         </motion.div>
       )}
