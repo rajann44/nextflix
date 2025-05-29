@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import NetflixLogo from './NetflixLogo'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function Header() {
   const [showUserMenu, setShowUserMenu] = useState(false)
@@ -36,6 +37,8 @@ export default function Header() {
 
   const unreadCount = notifications.filter(n => !n.read).length
 
+  const router = useRouter()
+
   // Focus search input when search is shown
   useEffect(() => {
     if (showSearch && searchInputRef.current) {
@@ -46,8 +49,11 @@ export default function Header() {
   // Handle search submission
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Implement search functionality
-    console.log('Searching for:', searchQuery)
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+      setShowSearch(false)
+      setSearchQuery('')
+    }
   }
 
   return (

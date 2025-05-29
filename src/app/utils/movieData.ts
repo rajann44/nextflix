@@ -88,4 +88,17 @@ export async function getChannels(): Promise<string[]> {
         });
     });
     return Array.from(uniqueChannels);
+}
+
+export async function getSearchResults(query: string) {
+    try {
+        const response = await fetch(
+            `https://api.dailymotion.com/videos?search=${encodeURIComponent(query)}&fields=id,title,channel,thumbnail_480_url,url,owner.screenname,views_total,duration&limit=20`
+        )
+        const data = await response.json()
+        return data.list || []
+    } catch (error) {
+        console.error('Error fetching search results:', error)
+        return []
+    }
 } 
