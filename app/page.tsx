@@ -4,8 +4,8 @@ import Banner from './components/Banner'
 import { getMoviesByCategory, getCategories } from './utils/movieData'
 
 export const metadata: Metadata = {
-  title: 'Netflix Clone',
-  description: 'A Netflix clone built with Next.js and TypeScript',
+  title: 'Nextflix',
+  description: 'A Nextflix built with Next.js and TypeScript',
 }
 
 export default function Home() {

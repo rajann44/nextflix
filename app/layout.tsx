@@ -6,8 +6,8 @@ import Footer from './components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Netflix Clone',
-  description: 'A Netflix clone built with Next.js and TypeScript',
+  title: 'Nextflix',
+  description: 'A Nextflix built with Next.js and TypeScript',
   icons: {
     icon: [
       {
