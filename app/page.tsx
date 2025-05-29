@@ -61,7 +61,7 @@ export default function Home() {
       />
 
       {/* Content Rows */}
-      <section className="space-y-24 pb-24">
+      <section className="space-y-8 pb-24">
         {/* Trending Now */}
         <div className="space-y-4">
           <h2 className="text-lg md:text-xl px-4 lg:px-16">Trending Now</h2>

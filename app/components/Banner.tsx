@@ -12,8 +12,8 @@ interface BannerProps {
 
 export default function Banner({ title, description, rating, year, seasons }: BannerProps) {
   return (
-    <div className="relative pb-24 lg:space-y-24 lg:pl-16">
-      <div className="flex max-w-6xl flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
+    <div className="relative pb-24 lg:space-y-8 lg:pl-16">
+      <div className="flex max-w-6xl flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-8">
         <div className="absolute left-0 top-0 -z-10 h-[95vh] w-screen">
           <img
             src="https://image.tmdb.org/t/p/original/49WJfeN0moxb9IPfGn8AIqMGskD.jpg"
@@ -47,7 +47,7 @@ export default function Banner({ title, description, rating, year, seasons }: Ba
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="max-w-xs text-xs text-shadow-md md:max-w-lg md:text-lg lg:max-w-2xl lg:text-2xl"
+          className="max-w-xs text-xs font-light text-shadow-md md:max-w-lg md:text-sm lg:max-w-2xl lg:text-base"
         >
           {description}
         </motion.p>
@@ -57,7 +57,7 @@ export default function Banner({ title, description, rating, year, seasons }: Ba
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
-        className="flex space-x-3"
+        className="flex space-x-3 mt-4"
       >
         <button className="bannerButton bg-white text-black">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
