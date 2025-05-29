@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Header from '../../components/Header'
 import MovieCard from '../../components/MovieCard'
-import { getMoviesByCategory } from '../../utils/movieData'
+import { getMoviesByCategory, getCategoryTitleFromSlug } from '../../utils/movieData'
 import PaginationControls from '../../components/PaginationControls'
 import { DailymotionVideo } from '../../types/dailymotion'
 
@@ -15,16 +15,17 @@ interface CategoryPageProps {
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const categoryTitle = getCategoryTitleFromSlug(params.category) || params.category
   return {
-    title: `${params.category} - Nextflix`,
-    description: `Browse ${params.category} videos on Nextflix`,
+    title: `${categoryTitle} - Nextflix`,
+    description: `Browse ${categoryTitle} videos on Nextflix`,
   }
 }
 
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
-  const category = decodeURIComponent(params.category)
+  const categoryTitle = getCategoryTitleFromSlug(params.category) || params.category
   const currentPage = Number(searchParams.page) || 1
-  const { results: movies, pagination } = await getMoviesByCategory(category, currentPage)
+  const { results: movies, pagination } = await getMoviesByCategory(params.category, currentPage)
 
   return (
     <main className="relative bg-gradient-to-b from-gray-900/10 to-[#010511]">
@@ -33,7 +34,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       <div className="pt-24 pb-16">
         <div className="px-4 md:px-16">
           <h1 className="text-2xl font-bold md:text-4xl mb-8">
-            {category}
+            {categoryTitle}
           </h1>
           
           {movies && movies.length > 0 ? (
@@ -53,7 +54,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   currentPage={pagination.currentPage}
                   totalPages={pagination.totalPages}
                   hasMore={pagination.hasMore}
-                  searchQuery={category}
+                  searchQuery={params.category}
                   isCategory={true}
                 />
               </div>

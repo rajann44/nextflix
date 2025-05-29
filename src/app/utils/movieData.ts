@@ -9,6 +9,24 @@ interface CachedMovies {
 
 let cachedMovies: CachedMovies | null = null;
 
+function slugify(text: string): string {
+    return text
+        .toLowerCase()
+        .replace(/[&]/g, 'and')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+export const channelMap = {
+    'Music': { key: 'MUSIC', slug: 'music' },
+    'Comedy & Entertainment': { key: 'COMEDY', slug: 'comedy-and-entertainment' },
+    'Gaming': { key: 'GAMING', slug: 'gaming' },
+    'People & Culture': { key: 'PEOPLE', slug: 'people-and-culture' },
+    'Lifestyle & How-To': { key: 'LIFESTYLE', slug: 'lifestyle-and-how-to' },
+    'Education': { key: 'EDUCATION', slug: 'education' },
+    'News': { key: 'NEWS', slug: 'news' }
+} as const;
+
 export async function getAllMovies(): Promise<CachedMovies> {
     if (cachedMovies) {
         return cachedMovies;
@@ -16,13 +34,13 @@ export async function getAllMovies(): Promise<CachedMovies> {
 
     try {
         const channels = [
-            { key: 'MUSIC', title: 'Music' },
-            { key: 'COMEDY', title: 'Comedy & Entertainment' },
-            { key: 'GAMING', title: 'Gaming' },
-            { key: 'PEOPLE', title: 'People & Culture' },
-            { key: 'LIFESTYLE', title: 'Lifestyle & How-To' },
-            { key: 'EDUCATION', title: 'Education' },
-            { key: 'NEWS', title: 'News' }
+            { key: 'MUSIC', title: 'Music', slug: 'music' },
+            { key: 'COMEDY', title: 'Comedy & Entertainment', slug: 'comedy-and-entertainment' },
+            { key: 'GAMING', title: 'Gaming', slug: 'gaming' },
+            { key: 'PEOPLE', title: 'People & Culture', slug: 'people-and-culture' },
+            { key: 'LIFESTYLE', title: 'Lifestyle & How-To', slug: 'lifestyle-and-how-to' },
+            { key: 'EDUCATION', title: 'Education', slug: 'education' },
+            { key: 'NEWS', title: 'News', slug: 'news' }
         ] as const;
 
         const moviesByCategory: CachedMovies = {};
@@ -44,18 +62,8 @@ export async function getAllMovies(): Promise<CachedMovies> {
 
 export async function getMoviesByCategory(category: string, page: number = 1, limit: number = 20): Promise<{ results: Movie[], pagination: { currentPage: number, hasMore: boolean, totalPages: number, totalResults: number } }> {
     // Find the channel key for the given category
-    const channelMap = {
-        'Music': 'MUSIC',
-        'Comedy & Entertainment': 'COMEDY',
-        'Gaming': 'GAMING',
-        'People & Culture': 'PEOPLE',
-        'Lifestyle & How-To': 'LIFESTYLE',
-        'Education': 'EDUCATION',
-        'News': 'NEWS'
-    } as const;
-
-    const channelKey = channelMap[category as keyof typeof channelMap];
-    if (!channelKey) {
+    const channelEntry = Object.entries(channelMap).find(([_, value]) => value.slug === category);
+    if (!channelEntry) {
         return {
             results: [],
             pagination: {
@@ -66,6 +74,8 @@ export async function getMoviesByCategory(category: string, page: number = 1, li
             }
         };
     }
+
+    const channelKey = channelEntry[1].key;
 
     try {
         const response = await DailymotionApiUtil.fetchVideosByChannel(channelKey, { limit, page });
@@ -145,4 +155,9 @@ export async function getSearchResults(query: string, page: number = 1, limit: n
             }
         }
     }
+}
+
+export function getCategoryTitleFromSlug(slug: string): string | undefined {
+    const entry = Object.entries(channelMap).find(([_, value]) => value.slug === slug);
+    return entry ? entry[0] : undefined;
 } 

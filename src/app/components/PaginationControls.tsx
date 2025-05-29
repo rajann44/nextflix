@@ -23,7 +23,7 @@ export default function PaginationControls({
   const handlePageChange = (newPage: number) => {
     if (newPage < 1 || newPage > totalPages) return
     if (isCategory) {
-      router.push(`/categories/${encodeURIComponent(searchQuery)}?page=${newPage}`)
+      router.push(`/categories/${searchQuery}?page=${newPage}`)
     } else {
       router.push(`/search?q=${encodeURIComponent(searchQuery)}&page=${newPage}`)
     }
