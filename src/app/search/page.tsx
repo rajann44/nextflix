@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const searchQuery = searchParams.q || ''
+  const searchQuery = String(searchParams.q || '')
   const currentPage = Number(searchParams.page) || 1
   const currentSort = searchParams.sort || 'relevance'
   
   // Convert slugified query back to original format for API call
-  const originalQuery = searchQuery.split('-').join(' ')
+  const originalQuery = searchQuery ? searchQuery.split('-').join(' ') : ''
   const searchData = searchQuery ? await getSearchResults(originalQuery, currentPage, 20, currentSort) : { results: [], pagination: { currentPage: 1, hasMore: false, totalPages: 0, totalResults: 0 } }
 
   return (

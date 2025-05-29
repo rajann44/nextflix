@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams, usePathname } from 'next/navigation'
 
 interface SortButtonProps {
   isCategory?: boolean
@@ -10,12 +10,13 @@ interface SortButtonProps {
 export default function SortButton({ isCategory = false }: SortButtonProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
 
   const currentSort = searchParams.get('sort') || 'trending'
   const currentPage = searchParams.get('page') || '1'
   const currentQuery = searchParams.get('q') || ''
-  const currentCategory = window.location.pathname.split('/').pop() || ''
+  const currentCategory = pathname.split('/').pop() || ''
 
   const sortOptions = [
     { value: 'trending', label: 'Trending' },
