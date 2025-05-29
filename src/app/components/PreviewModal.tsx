@@ -54,6 +54,7 @@ export default function PreviewModal({ isOpen, onClose, videoData }: PreviewModa
             {/* Video Preview */}
             <div className="relative aspect-video">
               <iframe
+                id="video-iframe"
                 src={embedUrl}
                 className="absolute inset-0 h-full w-full"
                 allow="autoplay"
