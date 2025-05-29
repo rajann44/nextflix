@@ -10,10 +10,12 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const channels = await getChannels()
-  const videogamesMovies = await getMoviesByChannel('videogames')
-  const animalsMovies = await getMoviesByChannel('animals')
-  const shortfilmsMovies = await getMoviesByChannel('shortfilms')
-  const newsMovies = await getMoviesByChannel('news')
+  const channelMovies = await Promise.all(
+    channels.map(async (channel) => ({
+      channel,
+      movies: await getMoviesByChannel(channel)
+    }))
+  )
 
   return (
     <main className="relative bg-gradient-to-b from-gray-900/10 to-[#010511]">
@@ -88,61 +90,20 @@ export default async function Home() {
       </div>
 
       <section className="space-y-8 pb-24">
-        {/* Video Games */}
-        <div className="space-y-4">
-          <h2 className="text-lg md:text-xl px-4 lg:px-16">Video Games</h2>
-          <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
-            {videogamesMovies.map((movie, index) => (
-              <MovieCard
-                key={movie.id}
-                {...movie}
-                index={index}
-              />
-            ))}
+        {channelMovies.map(({ channel, movies }) => (
+          <div key={channel} className="space-y-4">
+            <h2 className="text-lg md:text-xl px-4 lg:px-16 capitalize">{channel}</h2>
+            <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
+              {movies.map((movie, index) => (
+                <MovieCard
+                  key={movie.id}
+                  {...movie}
+                  index={index}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-
-        {/* Animals */}
-        <div className="space-y-4">
-          <h2 className="text-lg md:text-xl px-4 lg:px-16">Animals</h2>
-          <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
-            {animalsMovies.map((movie, index) => (
-              <MovieCard
-                key={movie.id}
-                {...movie}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Short Films */}
-        <div className="space-y-4">
-          <h2 className="text-lg md:text-xl px-4 lg:px-16">Short Films</h2>
-          <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
-            {shortfilmsMovies.map((movie, index) => (
-              <MovieCard
-                key={movie.id}
-                {...movie}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* News */}
-        <div className="space-y-4">
-          <h2 className="text-lg md:text-xl px-4 lg:px-16">News</h2>
-          <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
-            {newsMovies.map((movie, index) => (
-              <MovieCard
-                key={movie.id}
-                {...movie}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
+        ))}
       </section>
     </main>
   )
