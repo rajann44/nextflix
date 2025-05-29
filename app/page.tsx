@@ -64,7 +64,7 @@ export default function Home() {
       <section className="space-y-24 pb-24">
         {/* Trending Now */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl px-4 lg:px-16">Trending Now</h2>
+          <h2 className="text-lg md:text-xl px-4 lg:px-16">Trending Now</h2>
           <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
             {trendingMovies.map((movie, index) => (
               <MovieCard
@@ -78,7 +78,7 @@ export default function Home() {
 
         {/* Popular on Netflix */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl px-4 lg:px-16">Popular on Netflix</h2>
+          <h2 className="text-lg md:text-xl px-4 lg:px-16">Popular on Netflix</h2>
           <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
             {popularMovies.map((movie, index) => (
               <MovieCard
@@ -92,7 +92,7 @@ export default function Home() {
 
         {/* Continue Watching */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl px-4 lg:px-16">Continue Watching</h2>
+          <h2 className="text-lg md:text-xl px-4 lg:px-16">Continue Watching</h2>
           <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
             {continueWatchingMovies.map((movie, index) => (
               <MovieCard
@@ -106,7 +106,7 @@ export default function Home() {
 
         {/* My List */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl px-4 lg:px-16">My List</h2>
+          <h2 className="text-lg md:text-xl px-4 lg:px-16">My List</h2>
           <div className="flex space-x-4 overflow-x-scroll px-4 lg:px-16 scrollbar-hide">
             {myListMovies.map((movie, index) => (
               <MovieCard
@@ -120,7 +120,7 @@ export default function Home() {
 
         {/* Categories */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold md:text-4xl px-4 lg:px-16">Categories</h2>
+          <h2 className="text-lg md:text-xl px-4 lg:px-16">Categories</h2>
           <div className="grid grid-cols-2 gap-4 px-4 lg:px-16 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
             {categories.map((category) => (
               <div
