@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import NetflixLogo from './NetflixLogo'
+import Link from 'next/link'
 
 export default function Header() {
   const [showUserMenu, setShowUserMenu] = useState(false)
@@ -52,16 +53,34 @@ export default function Header() {
   return (
     <header className="fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all lg:px-16 lg:py-6">
       <div className="flex items-center space-x-2 md:space-x-10">
-        <NetflixLogo />
+        <Link href="/">
+          <NetflixLogo />
+        </Link>
         <ul className="hidden space-x-4 md:flex">
-          <li className="headerLink">Home</li>
-          <li className="headerLink">Music</li>
-          <li className="headerLink">Comedy</li>
-          <li className="headerLink">Gaming</li>
-          <li className="headerLink">Culture</li>
-          <li className="headerLink">Lifestyle</li>
-          <li className="headerLink">Education</li>
-          <li className="headerLink">News</li>
+          <li>
+            <Link href="/" className="headerLink">Home</Link>
+          </li>
+          <li>
+            <Link href="/category/Music" className="headerLink">Music</Link>
+          </li>
+          <li>
+            <Link href="/category/Comedy%20%26%20Entertainment" className="headerLink">Comedy</Link>
+          </li>
+          <li>
+            <Link href="/category/Gaming" className="headerLink">Gaming</Link>
+          </li>
+          <li>
+            <Link href="/category/People%20%26%20Culture" className="headerLink">Culture</Link>
+          </li>
+          <li>
+            <Link href="/category/Lifestyle%20%26%20How-To" className="headerLink">Lifestyle</Link>
+          </li>
+          <li>
+            <Link href="/category/Education" className="headerLink">Education</Link>
+          </li>
+          <li>
+            <Link href="/category/News" className="headerLink">News</Link>
+          </li>
         </ul>
       </div>
       <div className="flex items-center space-x-4 text-sm font-light">

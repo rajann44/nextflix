@@ -43,8 +43,25 @@ export async function getAllMovies(): Promise<CachedMovies> {
 }
 
 export async function getMoviesByCategory(category: string): Promise<Movie[]> {
-    const allMovies = await getAllMovies();
-    return allMovies[category] || [];
+    // Find the channel key for the given category
+    const channelMap = {
+        'Music': 'MUSIC',
+        'Comedy & Entertainment': 'COMEDY',
+        'Gaming': 'GAMING',
+        'People & Culture': 'PEOPLE',
+        'Lifestyle & How-To': 'LIFESTYLE',
+        'Education': 'EDUCATION',
+        'News': 'NEWS'
+    } as const;
+
+    const channelKey = channelMap[category as keyof typeof channelMap];
+    if (!channelKey) {
+        return [];
+    }
+
+    // Fetch 20 videos for the category
+    const response = await DailymotionApiUtil.fetchVideosByChannel(channelKey, { limit: 20 });
+    return response.list;
 }
 
 export async function getMovieById(id: string): Promise<Movie | undefined> {
