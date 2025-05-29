@@ -29,7 +29,7 @@ export default function MovieCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative h-[157px] w-[279px] cursor-pointer transition duration-200 ease-out md:hover:scale-105"
+      className="relative h-[157px] w-[279px] flex-shrink-0 cursor-pointer transition duration-200 ease-out md:hover:scale-105"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
