@@ -1,5 +1,5 @@
-import { DailymotionApiUtil } from '../../src/utils/dailymotionApi';
-import { DailymotionVideo } from '../../src/types/dailymotion';
+import { DailymotionApiUtil } from './dailymotionApi';
+import { DailymotionVideo } from '../types/dailymotion';
 
 type Movie = DailymotionVideo;
 
@@ -62,6 +62,13 @@ export async function getMovieById(id: string): Promise<Movie | undefined> {
 export async function getChannels(): Promise<string[]> {
     const movies = await getAllMovies();
     // Get unique channels with their special words
-    const uniqueChannels = new Set(movies.map(movie => movie.channel));
+    const uniqueChannels = new Set<string>();
+    Object.values(movies).forEach(movieList => {
+        movieList.forEach(movie => {
+            if (movie.channel) {
+                uniqueChannels.add(movie.channel);
+            }
+        });
+    });
     return Array.from(uniqueChannels);
 } 
