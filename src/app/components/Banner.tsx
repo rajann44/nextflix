@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 interface BannerProps {
   title: string
@@ -11,14 +12,17 @@ interface BannerProps {
 }
 
 export default function Banner({ title, description, rating, year, seasons }: BannerProps) {
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
+
   return (
     <div className="relative pb-24 lg:space-y-8 lg:pl-16">
       <div className="flex max-w-6xl flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-8">
         <div className="absolute left-0 top-0 -z-10 h-[57vh] w-screen">
           <img
-            src="https://image.tmdb.org/t/p/original/49WJfeN0moxb9IPfGn8AIqMGskD.jpg"
+            src={`https://picsum.photos/1920/1080?random=${Date.now()}`}
             alt="Banner"
-            className="h-full w-full object-cover"
+            className={`h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onLoad={() => setIsImageLoaded(true)}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
         </div>
