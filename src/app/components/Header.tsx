@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import NetflixLogo from './NetflixLogo'
 import Link from 'next/link'
 import { Suspense } from 'react'
@@ -9,6 +9,7 @@ import SearchBar from './SearchBar'
 export default function Header() {
   const [showUserMenu, setShowUserMenu] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const [notifications] = useState([
     {
       id: 1,
@@ -35,8 +36,23 @@ export default function Header() {
 
   const unreadCount = notifications.filter(n => !n.read).length
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <header className="fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all lg:px-16 lg:py-6">
+    <header className={`fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all duration-300 lg:px-16 lg:py-6 ${
+      isScrolled ? 'bg-netflix-black' : 'bg-gradient-to-b from-black/70 to-transparent'
+    }`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <Link href="/">
           <NetflixLogo />

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import MovieCard from './MovieCard';
-import Loader from './Loader';
 import PaginationControls from './PaginationControls';
 import { DailymotionVideo } from '../types/dailymotion';
 
@@ -18,30 +17,13 @@ interface CategoryResultsProps {
 }
 
 const CategoryResults = ({ initialMovies, initialPagination, categorySlug }: CategoryResultsProps) => {
-  const [movies, setMovies] = useState<DailymotionVideo[]>([]);
+  const [movies, setMovies] = useState<DailymotionVideo[]>(initialMovies);
   const [pagination, setPagination] = useState(initialPagination);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const loadMovies = async () => {
-      try {
-        // Simulate API delay to show loading state
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setMovies(initialMovies);
-        setPagination(initialPagination);
-      } catch (error) {
-        console.error('Error loading category movies:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadMovies();
+    setMovies(initialMovies);
+    setPagination(initialPagination);
   }, [initialMovies, initialPagination]);
-
-  if (isLoading) {
-    return <Loader />;
-  }
 
   if (movies.length === 0) {
     return (
