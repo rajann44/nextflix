@@ -5,8 +5,10 @@ import NetflixLogo from './NetflixLogo'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import SearchBar from './SearchBar'
+import { useRouter } from 'next/navigation'
 
 export default function Header() {
+  const router = useRouter()
   const [showUserMenu, setShowUserMenu] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -48,6 +50,20 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleSignOut = async () => {
+    try {
+      const response = await fetch('/api/signout', {
+        method: 'POST',
+      })
+      
+      if (response.ok) {
+        router.push('/profile-selection')
+      }
+    } catch (error) {
+      console.error('Error signing out:', error)
+    }
+  }
 
   return (
     <header className={`fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all duration-300 lg:px-16 lg:py-6 ${
@@ -160,13 +176,16 @@ export default function Header() {
                 <p className="font-medium">Account</p>
               </div>
               <div className="py-1">
-                <button className="block w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 hover:text-white">
+                <Link href="/profile" className="block w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 hover:text-white">
                   Profile
-                </button>
-                <button className="block w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 hover:text-white">
-                  Settings
-                </button>
-                <button className="block w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 hover:text-white">
+                </Link>
+                <Link href="/help" className="block w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 hover:text-white">
+                  Help Center
+                </Link>
+                <button 
+                  onClick={handleSignOut}
+                  className="block w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                >
                   Sign out
                 </button>
               </div>

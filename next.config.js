@@ -13,6 +13,7 @@ const nextConfig = {
         hostname: 'picsum.photos',
       },
     ],
+    domains: ['rb.gy'],
   },
 }
 
