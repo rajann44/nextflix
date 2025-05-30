@@ -13,22 +13,22 @@ const profiles = [
   {
     id: 1,
     name: 'John',
-    avatar: 'https://rb.gy/g1pwyx',
+    avatar: 'https://rb.gy/mg378l',
   },
   {
     id: 2,
     name: 'Sarah',
-    avatar: 'https://rb.gy/g1pwyx',
+    avatar: 'https://rb.gy/6j6f5q',
   },
   {
     id: 3,
     name: 'Mike',
-    avatar: 'https://rb.gy/g1pwyx',
+    avatar: 'https://rb.gy/mg378l',
   },
   {
     id: 4,
     name: 'Emma',
-    avatar: 'https://rb.gy/g1pwyx',
+    avatar: 'https://rb.gy/6j6f5q',
   },
 ]
 

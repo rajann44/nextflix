@@ -25,7 +25,7 @@ export default function ProfilePage() {
                   <div className="flex items-center gap-4">
                     <div className="relative h-24 w-24">
                       <Image
-                        src="https://rb.gy/g1pwyx"
+                        src="https://rb.gy/mg378l"
                         alt="Profile"
                         fill
                         className="rounded-md object-cover"

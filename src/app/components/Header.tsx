@@ -161,7 +161,7 @@ export default function Header() {
             onClick={() => setShowUserMenu(!showUserMenu)}
           >
             <img
-              src="https://rb.gy/g1pwyx"
+              src="https://rb.gy/mg378l"
               alt="User"
               className="h-8 w-8 rounded-md"
             />
